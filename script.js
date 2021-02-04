@@ -10,6 +10,11 @@ snake[0] = {
 }
 let direction = "right"
 
+let food = {
+  x: Math.floor(Math.random() * 15 + 1) * box,
+  y: Math.floor(Math.random() * 15 + 1) * box
+}
+
 function createBG() {
   context.fillStyle = "purple"
   context.fillRect(0, 0, 16 * box, 16 * box)
@@ -20,6 +25,11 @@ function createSnake() {
     context.fillStyle = "yellow"
     context.fillRect(snake[i].x, snake[i].y, box, box)
   }
+}
+
+function drawFood() {
+  context.fillStyle = "blue"
+  context.fillRect(food.x, food.y, box, box)
 }
 
 document.addEventListener("keydown", update)
@@ -42,6 +52,7 @@ function startGame() {
 
   createBG()
   createSnake()
+  drawFood()
 
   let snakeX = snake[0].x
   let snakeY = snake[0].y
@@ -62,5 +73,5 @@ function startGame() {
 
 }
 
-let game = setInterval(startGame, 50)
+let game = setInterval(startGame, 100)
 
